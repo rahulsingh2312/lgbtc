@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { MdContentCopy } from 'react-icons/md';
-import { FaTwitter, FaCheckCircle , FaTelegramPlane } from 'react-icons/fa';
+import { FaTwitter, FaCheckCircle, FaTelegramPlane } from 'react-icons/fa';
 import { useToast } from "@/hooks/use-toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -19,11 +19,9 @@ export default function Page() {
   const carouselImages = [
     '/0.png',
     '/3.png',
-
     '/4.png',
     '/1.jpeg',
     '/5.jpeg',
-    
   ];
 
   const copyAddress = () => {
@@ -57,7 +55,7 @@ export default function Page() {
               alt="LGBTC Logo" 
               width={50} 
               height={50} 
-              className="rounded-full  hover:blur-none transition-all"
+              className="rounded-full hover:blur-none transition-all"
             />
           </div>
           <div className="flex space-x-4">
@@ -67,7 +65,6 @@ export default function Page() {
               rel="noopener noreferrer"
               className="text-white hover:text-purple-200 transition-colors"
             >
-
               <FaTelegramPlane className="text-2xl" />
             </a>
             <a 
@@ -92,7 +89,7 @@ export default function Page() {
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8 
             max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Where 'L' stands for 'Laissez-faire', not love. Join the memecoin 
+            Where &apos;L&apos; stands for &apos;Laissez-faire&apos;, not love. Join the memecoin 
             revolution that puts profit before politics.
           </p>
           <button className="bg-white text-purple-600 px-6 md:px-8 py-2 md:py-3 
@@ -163,7 +160,7 @@ export default function Page() {
             {[
               {
                 title: "Profit Over Politics",
-                description: "We're not about being woke, we're about making bank. 💸",
+                description: "We&apos;re not about being woke, we&apos;re about making bank. 💸",
                 icon: "📈"
               },
               {
