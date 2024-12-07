@@ -46,7 +46,7 @@ export default function Page() {
 
   return (
 <div
-  className="relative min-h-screen bg-cover bg-center overflow-x-hidden"
+  className="relative pacifico-regular min-h-screen bg-cover bg-center overflow-x-hidden"
   style={{
     backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/008/131/137/large_2x/linear-pastel-rainbow-flag-background-blended-flat-color-lines-for-pride-month-free-vector.jpg')",
   }}
@@ -164,7 +164,7 @@ export default function Page() {
             {[
               {
                 title: "Profit Over Politics",
-                description: "We&apos;re not about being woke, we&apos;re about making bank. 💸",
+                description: "We are not about being woke, we are about making bank. 💸",
                 icon: "📈"
               },
               {
@@ -181,7 +181,7 @@ export default function Page() {
               <div key={index} className="text-center text-white p-6 
                 bg-purple-700/30 rounded-lg hover:scale-105 transition-transform">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 font-sans">{feature.title}</h3>
                 <p className="text-sm">{feature.description}</p>
               </div>
             ))}
