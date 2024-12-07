@@ -1,150 +1,197 @@
 "use client"
 
 import Image from 'next/image';
-import { MdContentCopy } from 'react-icons/md';
 import { useState } from 'react';
-import { FaCheckCircle } from "react-icons/fa";
+import { MdContentCopy } from 'react-icons/md';
+import { FaTwitter, FaCheckCircle , FaTelegramPlane } from 'react-icons/fa';
 import { useToast } from "@/hooks/use-toast";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 export default function Page() {
-
-
-
   const { toast } = useToast();
   const [isCopied, setIsCopied] = useState(false);
-  const address = '56SDQBD*********PX1PUMP';
+  const address = 'coming soon oming soon oming soonpump ';
 
+  // Images for carousel (replace with your actual images)
+  const carouselImages = [
+    '/0.png',
+    '/3.png',
 
+    '/4.png',
+    '/1.jpeg',
+    '/5.jpeg',
+    
+  ];
 
   const copyAddress = () => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      // Use clipboard API if available
-      navigator.clipboard.writeText(address)
-        .then(() => {
-          setIsCopied(true);
-          toast({
-            variant: 'destructive',
-            title: 'Address copied to clipboard! 🐱',
-            className: 'bg-white text-black border-black border-2 border-b-4 border-solid text-3xl toast-top-center',
-          });
-          setTimeout(() => {
-            setIsCopied(false);
-          }, 2000);
-        })
-        .catch((err) => {
-          console.error('Failed to copy text: ', err);
-        });
-    } else {
-      // Fallback for mobile devices that do not support clipboard API
-      const textArea = document.createElement('textarea');
-      textArea.value = address;
-      document.body.appendChild(textArea);
-      textArea.style.position = 'fixed';  // Avoid scrolling to bottom
-      textArea.style.left = '-9999px';
-      textArea.style.top = '-9999px';
-      textArea.focus();
-      textArea.select();
-      try {
-        document.execCommand('copy');  // Fallback for older browsers
+    navigator.clipboard.writeText(address)
+      .then(() => {
         setIsCopied(true);
         toast({
-          variant: 'destructive',
           title: 'Address copied to clipboard! 🐱',
-          className: 'bg-white text-black border-black border-2 border-b-4 md:w-[40%] w-[90%] border-solid text-3xl toast-top-center',
+          className: 'bg-white text-black border-black border-2 border-b-4',
         });
-        setTimeout(() => {
-          setIsCopied(false);
-        }, 2000);
-      } catch (err) {
-        console.error('Fallback: Oops, unable to copy', err);
-      }
-      document.body.removeChild(textArea);
-    }
+        setTimeout(() => setIsCopied(false), 2000);
+      })
+      .catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
   };
-  
+
+  const socialLinks = {
+    telegram: 'https://x.com/lgbtcOnSol',
+    twitter: 'https://x.com/lgbtcOnSol'
+  };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-purple-600 to-pink-500">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center">
-          <h1 className="text-6xl font-bold text-white mb-6" style={{ fontFamily: 'Comic Sans MS', textShadow: '2px 2px 4px #000000' }}>
-            LGBTC - Where 'L' stands for 'Laissez-faire', not love. 🤑
-          </h1>
-          <p className="text-2xl text-white mb-8" style={{ fontFamily: 'Papyrus', fontSize: '24px', lineHeight: '1.5' }}>
-            Join LGBTC: Because who needs diversity when you can have digital dominance? 💸
-          </p>
-          <button className="bg-white text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition" style={{ fontFamily: 'Impact', fontSize: '18px' }}>
-            Burn Your Rainbow Flag and Join the Movement! 🔥
-          </button>
-        </div>
-      </div>
-       {/* Address & Button Section */}
-       <div className='pt-8 flex justify-center items-center'>
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <div className="w-full max-w-[345px] h-[60px] rounded-xl shadow border border-black bg-yellow-200 flex items-center justify-between px-4 py-2">
-            <h1 className="text-black text-[20px] sm:text-[23px] font-normal">
-              {address}
-            </h1>
-            <button
-              onClick={copyAddress}
-              className="text-black text-xl font-normal justify-center items-center px-4 py-2 transition-all duration-200"
+    <div className="relative min-h-screen bg-gradient-to-b from-purple-600 to-pink-500 overflow-x-hidden">
+      {/* Navbar */}
+      <nav className="fixed top-10 md:left-20 left-10 right-10 rounded-full md:right-20 z-50 backdrop-blur-md bg-white/10 shadow-lg">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <Image 
+              src="/logo.jpeg" 
+              alt="LGBTC Logo" 
+              width={50} 
+              height={50} 
+              className="rounded-full  hover:blur-none transition-all"
+            />
+          </div>
+          <div className="flex space-x-4">
+            <a 
+              href={socialLinks.telegram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-purple-200 transition-colors"
             >
-              {isCopied ? <FaCheckCircle className="text-green-900 text-2xl" /> : <MdContentCopy className="text-black text-2xl" />}
-            </button>
-          </div>
 
-          <button className="w-[165px] h-[60px] rounded-xl shadow border border-black bg-[#f47372] hover:bg-[#dc4d4d] transition-all duration-300">
-            <div className="text-black text-lg sm:text-[22px] font-normal">
-              Invest in LGBTC and Get Ready to Rake in the Dough! 🤑
-            </div>
+              <FaTelegramPlane className="text-2xl" />
+            </a>
+            <a 
+              href={socialLinks.twitter} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-purple-200 transition-colors"
+            >
+              <FaTwitter className="text-2xl" />
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content with Top Padding */}
+      <main className="pt-24 mt-16 container mx-auto px-4">
+        {/* Hero Section */}
+        <section className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 
+            drop-shadow-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
+            LGBTC: Digital Dominance Awaits
+          </h1>
+          <p className="text-xl md:text-2xl text-white mb-8 
+            max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Where 'L' stands for 'Laissez-faire', not love. Join the memecoin 
+            revolution that puts profit before politics.
+          </p>
+          <button className="bg-white text-purple-600 px-6 md:px-8 py-2 md:py-3 
+            rounded-full font-bold hover:bg-purple-100 transition-colors">
+            Join the Movement
           </button>
-        </div>
-      </div>
+        </section>
 
-      {/* Features Section */}
-      <div className="bg-white bg-opacity-10 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center text-white p-6" style={{ fontFamily: 'Courier New', fontSize: '18px' }}>
-              <h3 className="text-2xl font-bold mb-4" style={{ textDecoration: 'underline' }}>
-                We Don't Care About Your Pronouns, Only Your Profit Margins 💸
-              </h3>
-              <p>Our community is all about making that dough, not about being woke. 😴</p>
-            </div>
-            <div className="text-center text-white p-6" style={{ fontFamily: 'Arial Black', fontSize: '20px' }}>
-              <h3 className="text-2xl font-bold mb-4" style={{ textTransform: 'uppercase' }}>
-                We're Not About Progress, Only Profit 📈
-              </h3>
-              <p>Our mission is to make you rich, not to make the world a better place. 🤑</p>
-            </div>
-            <div className="text-center text-white p-6" style={{ fontFamily: 'Verdana', fontSize: '19px' }}>
-              <h3 className="text-2xl font-bold mb-4" style={{ fontStyle: 'italic' }}>
-                Join the Movement and Get Ready to Get Rich! 💸
-              </h3>
-              <p>Don't miss out on this opportunity to join the most controversial memecoin in the game! 🚀</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Launch Event Section */}
-      <div className="bg-white bg-opacity-10 py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Comic Sans MS', textShadow: '2px 2px 4px #000000' }}>
-              Launch Event: Burn Your Rainbow Flag and Join the Movement! 🔥
-            </h1>
-            <p className="text-2xl text-white mb-8" style={{ fontFamily: 'Papyrus', fontSize: '24px', lineHeight: '1.5' }}>
-              Join us for the most epic launch event in memecoin history! 🎉
-            </p>
-            <button className="bg-white text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition" style={{ fontFamily: 'Impact', fontSize: '18px' }}>
-              RSVP Now and Get Ready to Burn Your Rainbow Flag! 🔥
+        {/* Address & Invest Section */}
+        <section className="flex flex-col md:flex-row justify-center items-center 
+          space-y-6 md:space-y-0 md:space-x-6 mb-16">
+          <div className="w-full max-w-md h-16 rounded-xl 
+            bg-yellow-200 flex items-center justify-between px-4 
+            shadow-lg border border-black">
+            <span className="text-black text-sm md:text-base truncate">
+              {address}
+            </span>
+            <button 
+              onClick={copyAddress}
+              className="ml-4 text-black hover:text-green-700 transition-colors"
+            >
+              {isCopied ? (
+                <FaCheckCircle className="text-green-900 text-2xl" />
+              ) : (
+                <MdContentCopy className="text-black text-2xl" />
+              )}
             </button>
           </div>
-        </div>
-      </div>
+          <button className="w-full max-w-md h-16 rounded-xl 
+            bg-[#f47372] hover:bg-[#dc4d4d] 
+            text-black text-base md:text-lg 
+            transition-colors shadow-lg border border-black">
+            Invest in LGBTC - Rake in the Dough! 🤑
+          </button>
+        </section>
 
-    
-    </main>
-  )
+        {/* Image Carousel */}
+        <section className="mb-16">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            className="max-w-4xl mx-auto"
+          >
+            {carouselImages.map((img, index) => (
+              <SwiperSlide key={index}>
+                <div className="w-full aspect-video relative">
+                  <Image 
+                    src={img} 
+                    alt={`Carousel image ${index + 1}`} 
+                    fill
+                    className="object-cover rounded-xl"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+
+        {/* Features Grid */}
+        <section className="bg-white bg-opacity-10 rounded-xl p-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Profit Over Politics",
+                description: "We're not about being woke, we're about making bank. 💸",
+                icon: "📈"
+              },
+              {
+                title: "Community-Driven",
+                description: "Join a movement that values financial freedom. 🚀",
+                icon: "🤝"
+              },
+              {
+                title: "No Boundaries",
+                description: "Disrupting the market, one memecoin at a time. 💥",
+                icon: "🌐"
+              }
+            ].map((feature, index) => (
+              <div key={index} className="text-center text-white p-6 
+                bg-purple-700/30 rounded-lg hover:scale-105 transition-transform">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                <p className="text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-black/20 py-8 text-center text-white">
+        <p>&copy; 2024 LGBTC. All rights to profit reserved.</p>
+      </footer>
+    </div>
+  );
 }
