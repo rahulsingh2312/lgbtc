@@ -45,8 +45,12 @@ export default function Page() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-purple-600 to-pink-500 overflow-x-hidden">
-      {/* Navbar */}
+<div
+  className="relative min-h-screen bg-cover bg-center overflow-x-hidden"
+  style={{
+    backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/008/131/137/large_2x/linear-pastel-rainbow-flag-background-blended-flat-color-lines-for-pride-month-free-vector.jpg')",
+  }}
+>      {/* Navbar */}
       <nav className="fixed top-10 md:left-20 left-10 right-10 rounded-full md:right-20 z-50 backdrop-blur-md bg-white/10 shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center">
