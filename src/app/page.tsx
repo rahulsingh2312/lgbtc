@@ -3,7 +3,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { MdContentCopy } from 'react-icons/md';
-import { FaTwitter, FaCheckCircle, FaTelegramPlane } from 'react-icons/fa';
+import { FaTwitter, FaCheckCircle } from 'react-icons/fa';
+import { FaTiktok } from "react-icons/fa";
+
 import { useToast } from "@/hooks/use-toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -20,8 +22,8 @@ export default function Page() {
     '/0.png',
     '/3.png',
     '/4.png',
-    '/1.jpeg',
-    '/5.jpeg',
+    // '/1.jpeg',
+    // '/5.jpeg',
   ];
 
   const copyAddress = () => {
@@ -46,7 +48,7 @@ export default function Page() {
 
   return (
 <div
-  className="relative pacifico-regular min-h-screen bg-cover bg-center overflow-x-hidden"
+  className="relative barrio-regular min-h-screen bg-cover bg-center overflow-x-hidden"
   style={{
     backgroundImage: 
     "url('https://static.vecteezy.com/system/resources/previews/023/059/715/non_2x/happy-pride-month-background-lgbtq-community-symbols-with-rainbow-ribbons-grunge-texture-design-for-celebration-against-violence-bisexual-transgender-gender-equality-rights-concept-free-vector.jpg')",
@@ -70,7 +72,8 @@ export default function Page() {
               rel="noopener noreferrer"
               className="text-white hover:text-purple-200 transition-colors"
             >
-              <FaTelegramPlane className="text-2xl" />
+
+              <FaTiktok className="text-2xl" />
             </a>
             <a 
               href={socialLinks.twitter} 
@@ -97,10 +100,12 @@ export default function Page() {
             Where &apos;L&apos; stands for &apos;Laissez-faire&apos;, not love. Join the memecoin 
             revolution that puts profit before politics.
           </p>
-          <button className="bg-white text-purple-600 px-6 md:px-8 py-2 md:py-3 
+          <button className="bg-white  text-purple-600 px-6 md:px-8 py-2 md:py-3 
             rounded-full font-bold hover:bg-purple-100 transition-colors">
-            Join the Movement
-          </button>
+              <div className='flex gap-3'>
+          <div>Join the Movement </div>  <img width={20} src='https://pump.fun/_next/image?url=%2Flogo.png&w=64&q=75' alt="pill" />
+          
+          </div> </button>
         </section>
 
         {/* Address & Invest Section */}
