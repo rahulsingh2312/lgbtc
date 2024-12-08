@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { MdContentCopy } from 'react-icons/md';
 import { FaTwitter, FaCheckCircle } from 'react-icons/fa';
-import { FaTiktok } from "react-icons/fa";
+import { FaTiktok , FaTelegram } from "react-icons/fa";
 
 import { useToast } from "@/hooks/use-toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -42,18 +42,26 @@ export default function Page() {
   };
 
   const socialLinks = {
-    telegram: 'https://x.com/lgbtcOnSol',
-    twitter: 'https://x.com/lgbtcOnSol'
+    telegram: 'https://t.me/lgbtc_portal',
+    twitter: 'https://x.com/lgbtcOnSol',
+    tiktok: 'https://x.com/lgbtcOnSol',
   };
 
   return (
-<div
-  className="relative barrio-regular min-h-screen bg-cover bg-center overflow-x-hidden"
-  style={{
-    backgroundImage: 
-    "url('https://yen.fyi/rainbow.mp4')",
-  }}
->      {/* Navbar */}
+
+<div className="relative barrio-regular min-h-screen overflow-hidden">
+  {/* Video Background */}
+  <video 
+    autoPlay 
+    muted 
+    loop 
+    playsInline 
+    className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+  >
+    <source src="/hi.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+    {/* Navbar */}
       <nav className="fixed top-10 md:left-20 left-10 right-10 rounded-full md:right-20 z-50 backdrop-blur-md bg-white/10 shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center">
@@ -66,11 +74,20 @@ export default function Page() {
             />
           </div>
           <div className="flex space-x-4">
-            <a 
+          <a 
               href={socialLinks.telegram} 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white hover:text-purple-200 transition-colors"
+            >
+
+              <FaTelegram className="text-2xl" />
+            </a>
+            <a 
+              href={socialLinks.telegram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400  hover:text-purple-200 cursor-not-allowed transition-colors"
             >
 
               <FaTiktok className="text-2xl" />
