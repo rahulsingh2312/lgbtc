@@ -51,7 +51,7 @@ export default function Page() {
   className="relative barrio-regular min-h-screen bg-cover bg-center overflow-x-hidden"
   style={{
     backgroundImage: 
-    "url('https://static.vecteezy.com/system/resources/previews/023/059/715/non_2x/happy-pride-month-background-lgbtq-community-symbols-with-rainbow-ribbons-grunge-texture-design-for-celebration-against-violence-bisexual-transgender-gender-equality-rights-concept-free-vector.jpg')",
+    "url('https://yen.fyi/rainbow.mp4')",
   }}
 >      {/* Navbar */}
       <nav className="fixed top-10 md:left-20 left-10 right-10 rounded-full md:right-20 z-50 backdrop-blur-md bg-white/10 shadow-lg">
