@@ -15,7 +15,7 @@ import 'swiper/css/pagination';
 export default function Page() {
   const { toast } = useToast();
   const [isCopied, setIsCopied] = useState(false);
-  const address = 'coming soon oming soon oming soonpump ';
+  const address = '596rPE115EbDJY6rk3oCFViXF4VSEmyHymmVveGDpump';
 
   // Images for carousel (replace with your actual images)
   const carouselImages = [
@@ -100,12 +100,14 @@ export default function Page() {
             Where &apos;L&apos; stands for &apos;Laissez-faire&apos;, not love. Join the memecoin 
             revolution that puts profit before politics.
           </p>
+          <a href="https://pump.fun/coin/596rPE115EbDJY6rk3oCFViXF4VSEmyHymmVveGDpump" target="_blank" rel="noopener noreferrer">
           <button className="bg-white  text-purple-600 px-6 md:px-8 py-2 md:py-3 
             rounded-full font-bold hover:bg-purple-100 transition-colors">
               <div className='flex gap-3'>
           <div>Join the Movement </div>  <img width={20} src='https://pump.fun/_next/image?url=%2Flogo.png&w=64&q=75' alt="pill" />
           
           </div> </button>
+          </a>
         </section>
 
         {/* Address & Invest Section */}
@@ -114,12 +116,12 @@ export default function Page() {
           <div className="w-full max-w-md h-16 rounded-xl 
             bg-yellow-200 flex items-center justify-between px-4 
             shadow-lg border border-black">
-            <span className="text-black text-sm md:text-base truncate">
+            <span className="text-black text-xs md:text-sm truncate">
               {address}
             </span>
             <button 
               onClick={copyAddress}
-              className="ml-4 text-black hover:text-green-700 transition-colors"
+              className=" text-black hover:text-green-700 transition-colors"
             >
               {isCopied ? (
                 <FaCheckCircle className="text-green-900 text-2xl" />
